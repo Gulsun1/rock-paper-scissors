@@ -22,3 +22,21 @@ function getHumanChoice() {     // Defines functions that validates and returns 
         return humanChoice;     // Returns the user's choice when valid
 }
 
+let computerScore = 0;      // Initiates variable for the computer's score
+let humanScore = 0;     // Initiates variable for the user's score
+
+function playRound(humanChoice,computerChoice) {        // Defines function to play a round
+    if (humanChoice === computerChoice) {       // Defines return in any case of a draw
+        return `Both of you chose ${humanChoice}... It's a draw!`
+    } else if (         // Defines condition in any case of a win for the user
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {         // In case of a win for the user, adds 1 point to his score and returns result message
+        humanScore++;
+        return `${humanChoice} beats ${computerChoice}, you win!`;
+    } else {    // In any other case, adds 1 point to the computer's score and returns result message
+        computerScore++;
+        return `${computerChoice} beats ${humanChoice}, you lose...`;
+    }
+}
