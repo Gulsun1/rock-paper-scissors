@@ -53,3 +53,4 @@ function playRound(humanChoice,computerChoice) {        // Defines function to p
 }
 
 playRound(getHumanChoice(),getComputerChoice());
+
