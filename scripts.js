@@ -19,7 +19,10 @@ function getHumanChoice() {     // Defines functions that validates and returns 
         console.log("Incorrect input, please select between Rock, Paper or Scissors");
         humanChoice = prompt("Incorrect input, please select between Rock, Paper or Scissors", "").toLowerCase();
     }
-        return humanChoice;     // Returns the user's choice when valid
+        let firstLetter = humanChoice.charAt(0);        // Assigns variable to first letter of the user's choice
+        let capitalFirst = firstLetter.toUpperCase();       // Capitalizes the letter and assigns it to a new variable
+        let capitalHumanChoice = capitalFirst + humanChoice.substring(1);       // Joins the capitalized first letter and the rest of the string
+        return capitalHumanChoice;     // Returns the user's choice when valid and with the first letter capitalized
 }
 
 let computerScore = 0;      // Initiates variable for the computer's score
@@ -27,16 +30,26 @@ let humanScore = 0;     // Initiates variable for the user's score
 
 function playRound(humanChoice,computerChoice) {        // Defines function to play a round
     if (humanChoice === computerChoice) {       // Defines return in any case of a draw
-        return `Both of you chose ${humanChoice}... It's a draw!`
+        console.log(`Both of you chose ${humanChoice}... It's a draw!`);
     } else if (         // Defines condition in any case of a win for the user
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {         // In case of a win for the user, adds 1 point to his score and returns result message
         humanScore++;
-        return `${humanChoice} beats ${computerChoice}, you win!`;
+        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice},`);
+        console.log(`${humanChoice} beats ${computerChoice}, you win!`);
+        console.log(`The score is now:`);
+        console.log(`You: ${humanScore}`);
+        console.log(`Computer: ${computerScore}`);
     } else {    // In any other case, adds 1 point to the computer's score and returns result message
         computerScore++;
-        return `${computerChoice} beats ${humanChoice}, you lose...`;
+        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice},`);
+        console.log(`${computerChoice} beats ${humanChoice}, you lose...`);
+        console.log(`The score is now:`);
+        console.log(`You: ${humanScore}`);
+        console.log(`Computer: ${computerScore}`);
     }
 }
+
+playRound(getHumanChoice(),getComputerChoice());
