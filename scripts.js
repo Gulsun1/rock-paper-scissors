@@ -52,4 +52,39 @@ function playRound(humanChoice,computerChoice) {        // Defines function to p
     }
 }
 
-playRound(getHumanChoice(),getComputerChoice());
+function playGame(roundCount) {     // Defines function for game round count logic, taking the desired round count as a parameter
+
+    let counter = 0;        // Initiates the variable for the round counter
+    let loopTimes = roundCount;     // Assigns a variable to the round count parameter
+
+    while (counter < loopTimes) {       // Loops rounds of the game and increments the round counter by 1 each time until it is equal to the amount of rounds selected
+        playRound(getHumanChoice(),getComputerChoice());
+        counter++;
+    }
+
+    function resultsMessage() {     // Defines function for the last message that announces the results
+
+        if (humanScore > computerScore) {       // Message in case of the user's win
+            console.log(`You have played ${loopTimes} times. The final score is:`);
+            console.log(`You: ${humanScore}`);
+            console.log(`Computer: ${computerScore}`);
+            console.log("You won the game!");
+        } else if (humanScore < computerScore) {        // Message in case of the computer's win
+            console.log(`You have played ${loopTimes} times. The final score is:`);
+            console.log(`You: ${humanScore}`);
+            console.log(`Computer: ${computerScore}`);
+            console.log("You lose the game!");
+        } else {        // Message in case of draw
+            console.log(`You have played ${loopTimes} times. The final score is:`);
+            console.log(`You: ${humanScore}`);
+            console.log(`Computer: ${computerScore}`);
+            console.log("It's a draw!");
+        }
+    }
+
+    console.log(resultsMessage());      // Invokes the results message function and logs the returned values in the console after the game loop finishes
+}
+
+let userRoundCount = prompt("How many rounds do you want to play?","");     // Asks the user how many raounds to play
+
+playGame(userRoundCount);       // Invokes the game's function
