@@ -32,9 +32,9 @@ function playRound(humanChoice,computerChoice) {        // Defines function to p
     if (humanChoice === computerChoice) {       // Defines return in any case of a draw
         console.log(`Both of you chose ${humanChoice}... It's a draw!`);
     } else if (         // Defines condition in any case of a win for the user
-        (humanChoice === "rock" && computerChoice === "scissors") ||
-        (humanChoice === "paper" && computerChoice === "rock") ||
-        (humanChoice === "scissors" && computerChoice === "paper")
+        (humanChoice === "Rock" && computerChoice === "Scissors") ||
+        (humanChoice === "Paper" && computerChoice === "Rock") ||
+        (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {         // In case of a win for the user, adds 1 point to his score and returns result message
         humanScore++;
         console.log(`You chose ${humanChoice} and the computer chose ${computerChoice},`);
