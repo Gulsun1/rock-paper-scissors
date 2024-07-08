@@ -88,3 +88,4 @@ function playGame(roundCount) {     // Defines function for game round count log
 let userRoundCount = prompt("How many rounds do you want to play?","");     // Asks the user how many raounds to play
 
 playGame(userRoundCount);       // Invokes the game's function
+
