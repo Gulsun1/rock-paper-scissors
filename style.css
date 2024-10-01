@@ -1,0 +1,100 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;  /* Includes padding and border in the total width and height */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-size: cover;
+    background: no-repeat center center fixed;
+    background-color:#edfaff;
+    text-align: center;
+}
+
+#mainContainer {
+    width: 1200px;
+    height: 600px;
+    margin: 100px auto;
+    background-color: white;
+    border-radius: 36px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 50px;
+}
+
+
+#counterContainer {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 30px
+}
+
+.counterText {
+    font-weight: 700;
+    font-size: large;
+    width: 10px;
+    overflow: visible;
+}
+
+#userCounterText {
+    margin-right: 30px;
+    margin-left: -30px;
+}
+
+.counter {
+    background-color: rgba(80, 80, 80, 0.05);
+    width: 100px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#textContainer {
+    width: 70%;
+    height: 50%;
+    background-color: rgba(80, 80, 80, 0.1);
+    border-radius: 24px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.actionButton {
+    display: inline-block;
+    margin: 0 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 16px;
+    font-size: 64px;
+   
+}
+
+.actionButton:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease-in-out;
+}
+
+.actionButton:active {
+    box-shadow: inset 0 8px 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(0);
+    transition: 0.1s;
+}

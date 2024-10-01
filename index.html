@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-
+    <div id="mainContainer">
+        <div id="counterContainer">
+            <p class="counterText" id="userCounterText">You:</p>
+            <div class="counter" id="userCounter">0</div>
+            <div class="counter" id="computerCounter">0</div>
+            <p class="counterText" id="computerCounterText">:Computer</p>
+        </div>
+        <div id="textContainer">Test</div>
+        <button class="actionButton" id="rock">✊</button>
+        <button class="actionButton" id="paper">✋</button>
+        <button class="actionButton" id="scissors">✌️</button>
+    </div>
 </body>
 </html>
