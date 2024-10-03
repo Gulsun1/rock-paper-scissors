@@ -1,6 +1,6 @@
-let windowText = document.querySelector('#textContainer').textContent;
-let humanScoreValue = document.querySelector('#userCounter').textContent;
-let computerScoreValue = document.querySelector('#computerCounter').textContent;
+let textWindow = document.querySelector('#textContainer');
+let humanScoreWindow = document.querySelector('#userCounter');
+let computerScoreWindow = document.querySelector('#computerCounter');
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
@@ -18,7 +18,7 @@ function getComputerChoice() {          // Defines function that returns "Rock",
     }
 }
 
-function getHumanChoice() {     // Defines functions that validates and returns the user's choice
+/* function getHumanChoice() {     // Defines functions that validates and returns the user's choice
 
     // let humanChoice = prompt("Rock, Paper or Scissors?", "").toLowerCase();     // Assigns the user's choice to a variable and makes it case insensitive
     let humanChoice = "";
@@ -29,31 +29,26 @@ function getHumanChoice() {     // Defines functions that validates and returns 
     paperButton.onclick = () => humanChoice = "paper";
     scissorsButton.onclick = () => humanChoice = "scissors";
 }
+*/
 
 let computerScore = 0;      // Initiates variable for the computer's score
 let humanScore = 0;     // Initiates variable for the user's score
 
 function playRound(humanChoice,computerChoice) {        // Defines function to play a round
     if (humanChoice === computerChoice) {       // Defines return in any case of a draw
-        windowText = `Both of you chose ${humanChoice}... It's a draw!`;
+        textWindow.textContent = `Both of you chose ${humanChoice}... It's a draw!`;
     } else if (         // Defines condition in any case of a win for the user
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {         // In case of a win for the user, adds 1 point to his score and returns result message
         humanScore++;
-        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice},`);
-        console.log(`${humanChoice} beats ${computerChoice}, you win!`);
-        console.log(`The score is now:`);
-        console.log(`You: ${humanScore}`);
-        console.log(`Computer: ${computerScore}`);
+        humanScoreWindow.textContent = humanScore;
+        textWindow.textContent = `You chose ${humanChoice} and the computer chose ${computerChoice}, ${humanChoice} beats ${computerChoice}, you win!`;
     } else {    // In any other case, adds 1 point to the computer's score and returns result message
         computerScore++;
-        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice},`);
-        console.log(`${computerChoice} beats ${humanChoice}, you lose...`);
-        console.log(`The score is now:`);
-        console.log(`You: ${humanScore}`);
-        console.log(`Computer: ${computerScore}`);
+        computerScoreWindow.textContent = computerScore;
+        textWindow.textContent = `You chose ${humanChoice} and the computer chose ${computerChoice}, ${computerChoice} beats ${humanChoice}, you lose...`;
     }
 }
 
@@ -90,9 +85,17 @@ function playGame(roundCount) {     // Defines function for game round count log
     console.log(resultsMessage());      // Invokes the results message function and logs the returned values in the console after the game loop finishes
 }
 
-let userRoundCount = 100;
+rockButton.addEventListener('click',function() {
+    playRound('rock',getComputerChoice());
+});
+paperButton.addEventListener('click',function() {
+    playRound('paper',getComputerChoice());
+});
+scissorsButton.addEventListener('click',function() {
+    playRound('scissors',getComputerChoice());
+});
 
-playGame(100);
+ 
 
 // prompt("How many rounds do you want to play?","");     // Asks the user how many raounds to play
 

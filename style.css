@@ -75,6 +75,7 @@ body {
     align-items: center;
     font-size: 2rem;
     font-weight: 700;
+    padding: 48px;
 }
 
 .actionButton {
