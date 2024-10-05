@@ -10,43 +10,86 @@ html, body {
     overflow: hidden;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;  /* Includes padding and border in the total width and height */
-    font-family: 'Courier New', Courier, monospace;
+* {
+    box-sizing: border-box;  
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
 }
 
 body {
     background-size: cover;
     background: no-repeat center center fixed;
-    background-color:#edfaff;
+    background-color: #edfaff;
     text-align: center;
+    user-select: none;
 }
 
-#content {
-    width: 1200px;
+
+.popUp > h2 {
+    font-size: 54px;
+}
+
+#formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#roundsInput {
+    background-color: var(--base-color);
+    border: none;
+    border-radius: 50px;
+    font-size: 32px;
+    width: 250px;
+    padding: 30px;
+    overflow: hidden;
+}
+
+#formButton {
+    padding: 16px;
+    height: 100px;
+    width: 100px;
+    border: none;
+    background-color: var(--user-color);
+    border-radius: 64px;
+}
+
+#formButton:hover, #roundsInput:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+#formButton:active {
+    box-shadow: inset 0 8px 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(0);
+    transition: 0.1s;
+}
+
+#hidden {
+    display: none;
+}
+
+.mainContainer {
+    width: 1000px;
     height: 750px;
     margin: 50px auto;
     background-color: white;
-    border-radius: 36px;
+    border-radius: 58px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 50px;
+    padding: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#counterContainer {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
 #userCounter {
     background-color: var(--user-color);
+
 }
 
 #computerCounter {
@@ -58,52 +101,27 @@ body {
     font-size: large;
 }
 
-.counter {
+.buttonContainer {
     position: relative;
-    background-color: rgba(80, 80, 80, 0.05);
-    width: 100px;
-    height: 80px;
-    border-radius: 16px;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    font-weight: bold;
+    gap: 30px;
 }
 
-#computerButtonContainer, #userButtonContainer {
-    position: relative;
-}
-
-#computerButtonContainer::before {
+#computerIcon {
     content: '🖥️';
-    font-size: 70px;
-    position: absolute;
-    top: 33px;
-    left: -132px;
     background-color: var(--computer-color);
-    border-radius: 16px;
-    padding: 5px;
 }
 
-#userButtonContainer::before {
+#userIcon {
     content: '🖱️';
-    font-size: 70px;
-    position: absolute;
-    top: 3px;
-    left: -132px;
     background-color: var(--user-color);
-    border-radius: 16px;
-    padding: 5px;
 }
 
-.computerButton {
-    display: inline-block;
-    margin: 30px 15px 0;
+.buttonContainer > div {
+    margin: 0;
     padding: 12px 20px;
-    border: none;
     border-radius: 16px;
     font-size: 64px;
     background-color: rgb(240, 240, 240);
@@ -124,20 +142,11 @@ body {
     padding: 48px;
 }
 
-.actionButton {
-    display: inline-block;
-    margin: 0 15px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 16px;
-    font-size: 64px;
-    background-color: rgb(240, 240, 240);
-}
-
 .actionButton:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 0 rgba(0, 0, 0, 0.4);
     transition: 0.1s ease-in-out;
+    cursor: pointer;
 }
 
 .actionButton:active {

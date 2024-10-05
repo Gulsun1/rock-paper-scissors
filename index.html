@@ -6,23 +6,33 @@
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
     <script src="scripts.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="content">
-        <div id="counterContainer">
-            <div class="counter" id="userCounter">0</div>
-            <div class="counter" id="computerCounter">0</div>
+    <div class="mainContainer popUp">
+        <h2>For how many rounds do you want to play?</h2>
+        <div id="formContainer">
+            <input type="number" id="roundsInput" min="1" placeholder="#" required>
+            <button id="formButton" onclick="submitRounds()"><img src="./arrow_forward_64dp_5F6368_FILL0_wght400_GRAD0_opsz20.svg"></button>
         </div>
-        <div id="computerButtonContainer">
-            <div class="computerButton" id="computerRock">✊</div>
-            <div class="computerButton" id="computerPaper">✋</div>
-            <div class="computerButton" id="computerScissors">✌️</div>
+    </div>
+    <div class="mainContainer content" id="hidden">
+        <div class="buttonContainer">
+            <div id="computerIcon">🖥️</div>
+            <div id="computerRock">✊</div>
+            <div id="computerPaper">✋</div>
+            <div id="computerScissors">✌️</div>
+            <div id="computerCounter">0</div>
         </div>
         <div id="textContainer"></div>
-        <div id="userButtonContainer">
-            <button class="actionButton" id="rock">✊</button>
-            <button class="actionButton" id="paper">✋</button>
-            <button class="actionButton" id="scissors">✌️</button>
+        <div class="buttonContainer">
+            <div id="userIcon">🖱️</div>
+            <div class="actionButton" id="rock">✊</div>
+            <div class="actionButton" id="paper">✋</div>
+            <div class="actionButton" id="scissors">✌️</div>
+            <div id="userCounter">0</div>
         </div>
     </div>
 </body>
