@@ -1,3 +1,9 @@
+:root {
+    --user-color: hsl(194, 50%, 90%);
+    --computer-color: hsl(0, 90%, 95%);
+    --base-color: rgb(240, 240, 240);
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -16,40 +22,44 @@ body {
     text-align: center;
 }
 
-#mainContainer {
+#content {
     width: 1200px;
-    height: 600px;
-    margin: 100px auto;
+    height: 750px;
+    margin: 50px auto;
     background-color: white;
     border-radius: 36px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
 #counterContainer {
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    margin: 0 auto;
     justify-content: center;
-    gap: 30px
+    gap: 20px;
+}
+
+#userCounter {
+    background-color: var(--user-color);
+}
+
+#computerCounter {
+    background-color: var(--computer-color);
 }
 
 .counterText {
     font-weight: 700;
     font-size: large;
-    width: 10px;
-    overflow: visible;
-}
-
-#userCounterText {
-    margin-right: 30px;
-    margin-left: -30px;
 }
 
 .counter {
+    position: relative;
     background-color: rgba(80, 80, 80, 0.05);
     width: 100px;
     height: 80px;
@@ -63,9 +73,45 @@ body {
     font-weight: bold;
 }
 
+#computerButtonContainer, #userButtonContainer {
+    position: relative;
+}
+
+#computerButtonContainer::before {
+    content: '🖥️';
+    font-size: 70px;
+    position: absolute;
+    top: 33px;
+    left: -132px;
+    background-color: var(--computer-color);
+    border-radius: 16px;
+    padding: 5px;
+}
+
+#userButtonContainer::before {
+    content: '🖱️';
+    font-size: 70px;
+    position: absolute;
+    top: 3px;
+    left: -132px;
+    background-color: var(--user-color);
+    border-radius: 16px;
+    padding: 5px;
+}
+
+.computerButton {
+    display: inline-block;
+    margin: 30px 15px 0;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 16px;
+    font-size: 64px;
+    background-color: rgb(240, 240, 240);
+}
+
 #textContainer {
     width: 70%;
-    height: 50%;
+    height: 250px;
     background-color: rgba(80, 80, 80, 0.1);
     border-radius: 24px;
     margin: 30px auto;
@@ -85,7 +131,7 @@ body {
     border: none;
     border-radius: 16px;
     font-size: 64px;
-   
+    background-color: rgb(240, 240, 240);
 }
 
 .actionButton:hover {

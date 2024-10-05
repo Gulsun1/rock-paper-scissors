@@ -1,9 +1,12 @@
-let textWindow = document.querySelector('#textContainer');
-let humanScoreWindow = document.querySelector('#userCounter');
-let computerScoreWindow = document.querySelector('#computerCounter');
-const rockButton = document.querySelector('#rock');
-const paperButton = document.querySelector('#paper');
-const scissorsButton = document.querySelector('#scissors');
+let textWindow = document.getElementById('textContainer');
+let humanScoreWindow = document.getElementById('userCounter');
+let computerScoreWindow = document.getElementById('computerCounter');
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
+const computerRockButton = document.getElementById('computerRock');
+const computerPaperButton = document.getElementById('computerPaper');
+const computerScissorsButton = document.getElementById('computerScissors');
 
 function getComputerChoice() {          // Defines function that returns "Rock", "Paper" or "Scissors" randomly
 
@@ -52,50 +55,84 @@ function playRound(humanChoice,computerChoice) {        // Defines function to p
     }
 }
 
-function playGame(roundCount) {     // Defines function for game round count logic, taking the desired round count as a parameter
-
-    let counter = 0;        // Initiates the variable for the round counter
-    let loopTimes = roundCount;     // Assigns a variable to the round count parameter
-
-    while (counter < loopTimes) {       // Loops rounds of the game and increments the round counter by 1 each time until it is equal to the amount of rounds selected
-        playRound(getHumanChoice(),getComputerChoice());
-        counter++;
+function checkGameOver() {
+    if (computerScore >= roundNum) {
+        rockButton.removeEventListener('click',handleRockClick);
+        paperButton.removeEventListener('click',handlePaperClick);
+        scissorsButton.removeEventListener('click',handleScissorsClick);
+        textWindow.style.backgroundColor = 'var(--computer-color)';
+        textWindow.textContent = 'You lose!';
+    } else if (humanScore >= roundNum) {
+        rockButton.removeEventListener('click',handleRockClick);
+        paperButton.removeEventListener('click',handlePaperClick);
+        scissorsButton.removeEventListener('click',handleScissorsClick);
+        textWindow.style.backgroundColor = 'var(--user-color)';
+        textWindow.textContent = 'You win!';
     }
-
-    function resultsMessage() {     // Defines function for the last message that announces the results
-
-        if (humanScore > computerScore) {       // Message in case of the user's win
-            console.log(`You have played ${loopTimes} times. The final score is:`);
-            console.log(`You: ${humanScore}`);
-            console.log(`Computer: ${computerScore}`);
-            console.log("You won the game!");
-        } else if (humanScore < computerScore) {        // Message in case of the computer's win
-            console.log(`You have played ${loopTimes} times. The final score is:`);
-            console.log(`You: ${humanScore}`);
-            console.log(`Computer: ${computerScore}`);
-            console.log("You lose the game!");
-        } else {        // Message in case of draw
-            console.log(`You have played ${loopTimes} times. The final score is:`);
-            console.log(`You: ${humanScore}`);
-            console.log(`Computer: ${computerScore}`);
-            console.log("It's a draw!");
-        }
-    }
-
-    console.log(resultsMessage());      // Invokes the results message function and logs the returned values in the console after the game loop finishes
 }
 
-rockButton.addEventListener('click',function() {
-    playRound('rock',getComputerChoice());
-});
-paperButton.addEventListener('click',function() {
-    playRound('paper',getComputerChoice());
-});
-scissorsButton.addEventListener('click',function() {
-    playRound('scissors',getComputerChoice());
-});
+function resetButtonsColor() {
+    computerRockButton.style.backgroundColor = 'var(--base-color)';
+    computerPaperButton.style.backgroundColor = 'var(--base-color)';
+    computerScissorsButton.style.backgroundColor = 'var(--base-color)';
+    rockButton.style.backgroundColor = 'var(--base-color)';
+    paperButton.style.backgroundColor = 'var(--base-color)';
+    scissorsButton.style.backgroundColor = 'var(--base-color)';
+}
 
- 
+function handleRockClick() {
+    resetButtonsColor();
+    rockButton.style.backgroundColor = 'var(--user-color)';
+    let computerChoice = getComputerChoice();
+    if (computerChoice === 'rock') {
+        computerRockButton.style.backgroundColor = 'var(--computer-color)';
+    } else if (computerChoice === 'paper') {
+        computerPaperButton.style.backgroundColor = 'var(--computer-color)';
+    } else {
+        computerScissorsButton.style.backgroundColor = 'var(--computer-color)';
+    }
+    playRound('rock', computerChoice);
+    checkGameOver(roundNum);
+}
+
+function handlePaperClick() {
+    resetButtonsColor();
+    paperButton.style.backgroundColor = 'var(--user-color)';
+    let computerChoice = getComputerChoice();
+    if (computerChoice === 'rock') {
+        computerRockButton.style.backgroundColor = 'var(--computer-color)';
+    } else if (computerChoice === 'paper') {
+        computerPaperButton.style.backgroundColor = 'var(--computer-color)';
+    } else {
+        computerScissorsButton.style.backgroundColor = 'var(--computer-color)';
+    }
+    playRound('paper', computerChoice);
+    checkGameOver(roundNum);
+}
+
+function handleScissorsClick() {
+    resetButtonsColor();
+    scissorsButton.style.backgroundColor = 'var(--user-color)';
+    let computerChoice = getComputerChoice();
+    if (computerChoice === 'rock') {
+        computerRockButton.style.backgroundColor = 'var(--computer-color)';
+    } else if (computerChoice === 'paper') {
+        computerPaperButton.style.backgroundColor = 'var(--computer-color)';
+    } else {
+        computerScissorsButton.style.backgroundColor = 'var(--computer-color)';
+    }
+    playRound('scissors', computerChoice);
+    checkGameOver(roundNum);
+}
+
+let roundNum = 5;
+
+rockButton.addEventListener('click',handleRockClick);
+paperButton.addEventListener('click',handlePaperClick);
+scissorsButton.addEventListener('click',handleScissorsClick);
+
+
+
 
 // prompt("How many rounds do you want to play?","");     // Asks the user how many raounds to play
 
